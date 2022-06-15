@@ -1,0 +1,207 @@
+<mvc:View controllerName="com.UI5Starter.Application.admin.controller.admin"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core" 
+	xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified"
+  >
+  <App>
+   <Panel
+		width="100%"
+		height="100%">
+    	<headerToolbar>
+			<OverflowToolbar height="2rem">
+			<core:Icon src="sap-icon://course-program"/>
+				<Title  text="BookCenter"/>
+                <Button icon="sap-icon://home" tap="home"></Button>
+			</OverflowToolbar>
+		</headerToolbar>
+    	<Page
+		title="Admin Panel"
+		showHeader="true" >
+        <content>
+		<Button type="Emphasized" id="addButton" text="Add" tap="show"></Button>
+	 <HBox id="buttons">
+		
+		<Button type="Emphasized" text="Set Stock" tap="showStock" ></Button>
+		<Button type="Emphasized" text="Set Categories" tap="showCategory" ></Button>
+		<Button type="Emphasized" text="Set Authors" tap="showAuthor" ></Button>
+ </HBox>
+			<f:SimpleForm  visible="false" id="adminPanel" width="50%" editable="true">
+				<f:content>
+					<core:Title text="Book Add" />
+					<Label text="Name" />
+					<Input value="{/name}"/>
+						<Label text="Price" />
+					<Input  value="{/price}"/>
+					<Label text="Stock" />
+					<Input value="{/stock}"/>
+					<Label text="Author" />
+					<Select  width="100%"
+						 items="{/authors}" id="AuthorSelectList">
+						<items>
+							<core:Item text="{name}" key="{id}"  />
+						</items>
+					</Select>
+					<Button  type="Emphasized" tap="onAuthorDialogPress" text="Author Add">
+					</Button>
+					<Label text="Category" />
+					<Select width="100%"
+						 items="{/categories}" id="CategorySelectList">
+						<items>
+							<core:Item text="{name}" key="{id}"/>
+						</items>
+					</Select>
+					<Button  type="Emphasized" tap="onCategoryDialogPress" text="Category Add">
+					</Button>
+					<Label text="Product Image"/>
+				    <u:FileUploader
+					    uploadUrl="upload/"
+						tooltip="Upload your file to the local server"
+						change="downloadImage"/>
+					<Button type="Accept" tap="addBook" width="10rem" text="Add"></Button>
+					<Button  tap="cancel" width="10rem" text="Close"></Button>
+				</f:content>
+					<f:content width="100%">
+				</f:content>
+			</f:SimpleForm>
+			<MessageStrip id="nameError" visible="false"
+				text="Error: Please fill name input "
+				showIcon="true" showCloseButton="true" close="onMsgStripClose">
+			</MessageStrip>
+        </content>
+		<VBox id="tables">	<HBox id="adminPanel2" visible="false">
+			<Table width="100%"  mode="SingleSelectMaster" selectionChange="changeSelect" items="{/products}" id="ProductsTable" growing="true" growingThreshold="10" paste="onPaste">
+				<headerToolbar>
+					<OverflowToolbar id="otbSubheader">
+						<Title text="Products" level="H2" />
+						<ToolbarSpacer />
+
+						<Button id="editButton" text="Edit" type="Transparent"
+							press="onEdit" />
+						
+						<Button id="saveButton" text="Save" type="Transparent"
+							press="onSave" visible="false" />
+						<Button id="cancelButton" text="Cancel" type="Transparent"
+							press="onCancel" visible="false" />
+						
+							<Button text="Close"  tap="cancel"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+						<Column >
+						<Text text="Product" />
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="Quantity" />
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+						<Text text="Price" />
+					</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+						<Text text="Author" />
+					</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+						<Text text="Category" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem id="item" vAlign="Middle">
+						<cells>
+							<ObjectIdentifier title="{name}"  />
+							<ObjectNumber
+								number="{stock}"
+								/>
+							<ObjectNumber number="{price} $"  />
+							
+							 <ObjectNumber
+								number="{authorname}"
+							 />
+							 <ObjectNumber
+								number="{categoryname}"
+							 />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			</HBox>
+			<HBox id="adminPanel3" visible="false">
+			<Table width="100%"  mode="SingleSelectMaster" selectionChange="changeCSelect" items="{/categories}" id="CategoriesTable" growing="true" growingThreshold="10" paste="onPaste">
+				<headerToolbar>
+					<OverflowToolbar id="">
+						<Title text="Products" level="H2" />
+						<ToolbarSpacer />
+
+						<Button id="editCButton" text="Edit" type="Transparent"
+							press="onEditCategory" />
+						
+						<Button id="saveCButton" text="Save" type="Transparent"
+							press="onSaveCategory" visible="false" />
+						<Button id="cancelCButton" text="Cancel" type="Transparent"
+							press="onCancelCategory" visible="false" />
+						
+							<Button text="Close"  tap="cancel"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+						<Column >
+						<Text text="Category" />
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="Stock" />
+					</Column>
+					
+				</columns>
+				<items>
+					<ColumnListItem id="y" vAlign="Middle">
+						<cells>
+							<ObjectIdentifier title="{name}"  />
+							<ObjectNumber
+								number="{stock}"
+								/>
+						
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			</HBox>
+		<HBox id="adminPanel4" visible="false">
+			<Table width="100%"  mode="SingleSelectMaster" selectionChange="changeCSelect" items="{/authors}" id="AuthorsTable" growing="true" growingThreshold="10" paste="onPaste">
+				<headerToolbar>
+					<OverflowToolbar >
+						<Title text="Authors" level="H2" />
+						<ToolbarSpacer />
+						<Button id="editAButton" text="Edit" type="Transparent"
+							press="onEditAuthor" />
+						<Button id="saveAButton" text="Save" type="Transparent"
+							press="onSaveAuthor" visible="false" />
+						<Button id="cancelAButton" text="Cancel" type="Transparent"
+							press="onCancelAuthor" visible="false" />
+							<Button text="Close"  tap="cancel"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+						<Column >
+						<Text text="Author" />
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Text text="Stock" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem  vAlign="Middle">
+						<cells>
+							<ObjectIdentifier title="{name}"  />
+							<ObjectNumber
+								number="{stock}"
+								/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			</HBox>
+			</VBox>
+	</Page>
+	</Panel>
+      </App>
+</mvc:View>

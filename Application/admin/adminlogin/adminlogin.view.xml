@@ -1,0 +1,24 @@
+<mvc:View controllerName="com.UI5Starter.Application.admin.adminlogin.adminlogin"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+     height="100%"
+     	xmlns:core="sap.ui.core" 
+  >
+  <App>
+		<Page  >
+		   <content >
+            <HBox width="100%"   alignItems="Center" >
+                <VBox width="100%"  alignItems="Center" >
+                    <core:Icon src="sap-icon://course-program"/>
+			            	<Title  text="BookCenter Admin"/>
+                    <Label design="Bold" text="Username"  width="100%" alignItems="Center" />
+                    <Input width="20rem" placeholder="Username" value="{/username}" />
+                     <Label design="Bold" text="Password"  width="100%"/>
+                     <Input type="Password" width="20rem" placeholder="password" value="{/password}" />
+                    <Button width="11rem"  type="Emphasized" text="Login" press="adminenter"></Button>
+                </VBox>
+              </HBox> 
+        </content>
+		</Page>
+  </App>
+</mvc:View>

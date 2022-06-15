@@ -1,0 +1,17 @@
+{
+    "name": "ui5-starter-template",
+    "version": "1.0.0",
+    "description": "",
+    "main": "Component-preload.js",
+    "scripts": {
+        "start": "echo 'avaible on: http://localhost:3011' && http-server -c-1 -s -p 3011",
+        "build": "gulp build"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "",
+    "dependencies": {},
+    "devDependencies": {
+        "http-server": "^0.12.3"
+    }
+}

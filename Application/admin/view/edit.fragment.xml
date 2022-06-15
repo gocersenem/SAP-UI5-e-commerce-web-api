@@ -1,0 +1,48 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+	<Dialog
+		id="Stockdialog"
+		title="Reorganize Book"
+		>
+		<content>
+		<VBox>
+		<Label text="Name"/>
+		<Input value="{/Name2}"/>
+		<Label text="Price"/>
+		<Input value="{/Price}"/>
+		<Label text="Stock"/>
+		<Input value="{/Stock}"/>
+		<Label text="Author"/>
+		<Select id="AuthorASelectList" width="100%"
+			items="{/authors}" >
+			<items>
+			<c:Item text="{name}" key="{id}"/>
+			</items>
+		</Select>
+			<Label text="Category"/>
+		<Select id="CategoryASelectList" width="100%"
+			items="{/categories}">
+			<items>
+			<c:Item text="{name}" key="{id}"/>
+			</items>
+		</Select>
+		</VBox>
+		</content>
+		
+		<beginButton>
+			<Button text="Save" tap="onSave"/>
+			
+		</beginButton>
+		<Button id="deleteButton" text="Delete" type="Transparent"
+							press="onDelete" />
+		<endButton>
+		
+			<Button text="Cancel" tap="onCloseDialog"/>
+		</endButton>
+		
+	
+		
+	</Dialog>
+</c:FragmentDefinition>

@@ -1,0 +1,63 @@
+<mvc:View controllerName="com.UI5Starter.Application.signup.controller.signup"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+  >
+  <App>
+     <Panel
+		width="100%"
+		height="100%">
+    	<headerToolbar>
+			<OverflowToolbar height="2rem">
+            <core:Icon src="sap-icon://course-program"/>
+				<Title  text="BookCenter"/>
+       <Button icon="sap-icon://home" tap="home"></Button>
+			</OverflowToolbar>
+		</headerToolbar>
+    	<Page
+        title="SIGN UP"
+		id="page"
+		showHeader="true" >
+        <customHeader>
+		<Bar>
+				
+                <contentRight>
+                <Button
+					id="LoginButton"
+					width="8em"
+					icon="sap-icon://customer"
+					type="Default"
+                    tap="routelogin"
+                   >
+					<customData>
+						<BadgeCustomData
+                        id="userData"
+							key=""
+							value=""
+							visible="true"/>
+                    </customData>
+                </Button>
+                 </contentRight>
+                 </Bar>
+                  </customHeader>
+        <content>
+
+            <HBox width="100%"   alignItems="Center" >
+                <VBox width="100%"  alignItems="Center" >
+                    <Label design="Bold" text="Name Surname"  width="100%"   />
+                    <Input width="20rem" placeholder="Name Surname" value="{/username}" />
+                    <Label design="Bold" text="Email"  width="100%"   />
+                    <Input width="20rem" placeholder="e-mail" value="{/email}" />
+                     <Label design="Bold" text="Password"  width="100%"   />
+                     <Input type="Password" width="20rem" placeholder="password" value="{/password}" />
+                    <Button width="11rem"  type="Emphasized" text="Sign up" press="userAdd"></Button>
+                  	
+                  
+                </VBox>
+              </HBox> 
+
+
+        </content>
+	</Page>
+    </Panel>
+      </App>
+</mvc:View>

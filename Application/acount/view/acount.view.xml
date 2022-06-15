@@ -1,0 +1,32 @@
+<mvc:View controllerName="com.UI5Starter.Application.acount.controller.acount"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"  >
+  <App>
+   <Panel
+		width="100%"
+		height="100%">
+    	<headerToolbar>
+			<OverflowToolbar height="2rem">
+				<Title  text="BookCenter"/>
+       <Button icon="sap-icon://home" tap="home"></Button>
+			</OverflowToolbar>
+		</headerToolbar>
+    <Page title="LOGIN">
+                 <content>
+            <HBox width="100%"   alignItems="Center" >
+                <VBox width="100%"  alignItems="Center" >
+                    <Label design="Bold" text="Email"  width="100%" alignItems="Center" />
+                    <Input width="20rem" placeholder="e-mail" value="{/email}" />
+                     <Label design="Bold" text="Password"  width="100%"/>
+                     <Input type="Password" width="20rem" placeholder="password" value="{/password}" />
+                    <Button width="11rem"  type="Emphasized" text="Login" press="useraccount"></Button>
+                    <Button width="11rem"  text="Sign up" press="register"></Button>
+                </VBox>
+              </HBox> 
+        </content>
+            
+     
+	  </Page>
+    </Panel>
+  </App>
+</mvc:View>

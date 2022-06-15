@@ -1,0 +1,84 @@
+<mvc:View controllerName="com.UI5Starter.Application.cart.controller.cart"
+    xmlns:mvc="sap.ui.core.mvc"
+	 xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    	xmlns:l="sap.ui.layout"
+  >
+  <Panel
+		height="100%">
+    	<headerToolbar>
+			<OverflowToolbar height="2rem">
+			<core:Icon src="sap-icon://course-program"/>
+				<Title  text="BookCenter"/>
+                <Button icon="sap-icon://home" tap="home"></Button>
+			</OverflowToolbar>
+		</headerToolbar>
+    	<Page 
+		title="Cart"
+		showHeader="true" 
+		>
+        <content>
+		<VBox id="emptycart" visible="false"  >
+		<Image src="https://www.vinsolutions.com/wp-content/uploads/sites/2/vinsolutions/media/Vin-Images/news-blog/Empty_Shopping_Cart_blog.jpg"/>
+		<Label class="bold-text" design="Bold" text="Your cart is empty. Let's get the start shopping!" />
+		<Button text="Go products page!" press="home"/>
+		</VBox>
+        	<l:VerticalLayout id="table" class="sapUiContentPadding" width="100%">
+		<l:content>
+				<l:Grid
+					defaultSpan="XL9 L12 M12 S12">
+					<l:content>
+		<VBox 
+				alignItems="Center">
+				 <Table     items="{/shopproducts}">
+                <columns>
+                <Column>
+				<core:Icon src="sap-icon://course-program"/>
+                </Column>
+                <Column>
+				<Label text="Name"/>
+                </Column>
+                <Column>
+				<Label text="Price"/>
+                </Column>
+                <Column>
+				<Label text="Quantity"/>
+                </Column>
+				<Column>
+                </Column>
+				<Column>
+                </Column>
+				<Column>
+                </Column>
+                </columns>
+                <items>
+                <ColumnListItem>
+                <Image src="{image}" width="5em"/>
+                <Text text="{name}"></Text>
+                <Text text="{price} $"></Text>
+			    <StepInput
+				id="stepinput"
+			    	value="{number}"
+						min="0"
+						max="{stock}"
+						width="5rem"
+						change="onChange"/>
+				<Button tap="deleteshopproduct" icon="sap-icon://delete"></Button>
+                </ColumnListItem>
+                </items>
+        </Table>
+         </VBox>
+		 	
+					</l:content>
+				</l:Grid>
+		</l:content>
+		<HBox width="1%" >
+	<Label class="sapUiMediumMarginEnd" text="TOTAL: {/cartTotal} $"/>
+	<Button class="sapUiMediumMarginBegin" text= "Buy" press="buyButton"/>
+	</HBox>	
+	</l:VerticalLayout>
+        </content>
+	
+	</Page>
+	 </Panel>
+</mvc:View>
